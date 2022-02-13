@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar Documentation</title>
+</head>
+
+<body>
+    <div id="redoc"></div>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+    <script>
+        fetch('http://192.168.0.230:4040/web/docs')
+            .then(res => res.json())
+            .then(spec => {
+                console.log(spec)
+                Redoc.init(spec, {
+                    // options go here (e.g. pathInMiddlePanel)
+                    hideDownloadButton: true
+                }, document.getElementById('redoc'));
+            });
+    </script>
+</body>
+
+</html>
